@@ -35,7 +35,10 @@ const getCategories = () => {
         .then((rep) => rep.json())
         .then((rep) => {
             categories = rep;
-            displayFiltres();
+            if(isLogin() === false) {
+                displayFiltres();
+            }
+            
         })
 
 }

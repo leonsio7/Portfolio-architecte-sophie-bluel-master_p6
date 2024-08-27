@@ -1,23 +1,24 @@
 const btnlogin = document.getElementById("btnlogin");
 
 
-btnlogin.addEventListener('click', ()=> {
+btnlogin.addEventListener('click',()=> {
     
 
     // 1. recouperer les identifients
 
-    const email = document.getElementById('email').value
-    const password = document.getElementById('password').value
+    const Email = document.getElementById(
+        "email").value;
+    const Password = document.getElementById("password").value;
     
     // 2. verifier si les donnes saisir correct
     // 3. envoyer une requete avec fetch pour recouperer le token
 
     fetch("http://localhost:5678/api/users/login", {
         method: "POST",
-        headers: {'Content-Type': 'aplication/json' },
+        headers: {'Content-Type': 'application/json' },
         body: JSON.stringify({ 
-            email: email,
-            password: password,
+            email: Email,
+            password: Password,
          }),
     })
     // 4. recevoir la response
@@ -25,15 +26,18 @@ btnlogin.addEventListener('click', ()=> {
     .then((response) => response.json())
     .then((response) => {
         if (response.token) {
-            sessionStorage.setItem("token", response.token)
+            sessionStorage.setItem("token",response.token);
             document.location.href = "/";
         }
         else {
             alert("erreur identifient")
         }
+       
     })
+
+    
     // 5. traitement de la response
 
 
     
-})
+});

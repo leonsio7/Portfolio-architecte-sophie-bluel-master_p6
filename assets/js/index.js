@@ -3,6 +3,7 @@ let categories = [];
 
 const gallery = document.querySelector('.gallery')
 const filtres = document.querySelector('.filtres');
+const galleryDelPhotos = document.querySelector('#galleryDelPhotos');
 
 const getWorks = () => {
     fetch("http://localhost:5678/api/works")
@@ -18,6 +19,7 @@ getWorks();
 
 const displayWork = () => {
     gallery.innerHTML = "";
+    galleryDelPhotos.innerHTML ="";
 
 
     works.forEach((element) => {
@@ -26,6 +28,19 @@ const displayWork = () => {
 				<img src=${element.imageUrl} alt="Abajour Tahina">
 				<figcaption>${element.title}</figcaption>
 			</figure>`
+
+            galleryDelPhotos.innerHTML +="";
+
+            const div = document.createElement('div');
+            const img = document.createElement('img');
+            img.src = element.imageUrl;
+            const trash = document.createElement('i');
+            trash.classList.add('fa', 'fa-trash')
+
+            div.appendChild(img)
+            div.appendChild(trash)
+
+            galleryDelPhotos.appendChild(div)
 
     })
 }

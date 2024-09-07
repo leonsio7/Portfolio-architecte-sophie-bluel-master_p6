@@ -27,20 +27,24 @@ const displayWork = () => {
             `<figure>
 				<img src=${element.imageUrl} alt="Abajour Tahina">
 				<figcaption>${element.title}</figcaption>
-			</figure>`
+			</figure>`;
 
-            galleryDelPhotos.innerHTML +="";
+            //galleryDelPhotos.innerHTML +="";
 
             const div = document.createElement('div');
             const img = document.createElement('img');
             img.src = element.imageUrl;
             const trash = document.createElement('i');
-            trash.classList.add('fa', 'fa-trash')
+            trash.classList.add('fa', 'fa-trash');
 
-            div.appendChild(img)
-            div.appendChild(trash)
+            trash.addEventListener('click' , function () {
+                div.remove();
+            });
 
-            galleryDelPhotos.appendChild(div)
+            div.appendChild(img);
+            div.appendChild(trash);
+
+            galleryDelPhotos.appendChild(div);
 
     })
 }

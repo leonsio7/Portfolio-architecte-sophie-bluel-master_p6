@@ -357,7 +357,6 @@ h3 {
 	width: 50%;
 	padding: 7px;
 	background-color: #1D6154;
-	;
 	color: white;
 	border: none;
 	border-radius: 15px;
@@ -378,22 +377,40 @@ span a {
 	display: flex;
 	gap: 10px;
 	flex-wrap: wrap;
-	padding-left: 32px;
-	height: 300px;
+	padding-left: 52px;
 	
 }
 
 #galleryDelPhotos div {
 	width: 80px;
+	position: relative;
+	display: inline-block;
 }
 
 #galleryDelPhotos img {
 	width: 100%;
 	height: 100px;
 	object-fit: cover;
+	
 }
 
+.fa-trash {
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	color: white;
+	cursor: pointer;
+	background-color: black;
+	padding: 5px;
+	border-radius: 10%;
+	transition: background-color 0.3s ease;
+	
+}
 
+.fa-trash:hover {
+	background-color: rgba(255, 0, 0, 0.5);
+
+}
 
 footer nav ul {
 	display: flex;
@@ -417,14 +434,36 @@ footer nav ul {
 	flex-direction: column;
 }
 
+.modal-h2 {
+	color: black;
+}
+
 #modal-gallery,
 #modal-form {
 	display: none;
-	width: 500px;
-	height: 550px;
+	width: 550px;
+	height: 650px;
 	background: white;
 	flex-direction: column;
-	justify-content: center;
 	align-items: center;
-	gap: 70px;
+	gap: 45px;
+}
+
+#closeBtn {
+	left: 230px;
+	position: relative;
+	top: 30px;
+	font-weight: 900;
+	
+}
+
+#addPhotoBtn {
+	width: 50%;
+	padding: 7px;
+	background-color: #1D6154;
+	color: white;
+	border: none;
+	border-radius: 15px;
+	font-size: 15px;
+
 }

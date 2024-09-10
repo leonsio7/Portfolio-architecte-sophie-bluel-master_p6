@@ -304,17 +304,16 @@ input[type="submit"] {
 	color: #1D6154;
 	font-weight: 700;
 	cursor: pointer;
-	transition: all 0.3s ease;
+	transition: background-color 0.3s ease;
+
 }
 
-.filtres button:active {
-	background-color: #1D6154;
+.filtres button:hover,
+.filtres button:active,
+.filtres button:focus {
+	background-color:#1D6154; 
 	color: white;
-}
 
-.filtres button:hover {
-	background-color: #1D6154;
-	color: white;
 }
 
 
@@ -454,6 +453,7 @@ footer nav ul {
 	position: relative;
 	top: 30px;
 	font-weight: 900;
+	cursor: pointer;
 	
 }
 
@@ -466,4 +466,12 @@ footer nav ul {
 	border-radius: 15px;
 	font-size: 15px;
 
+}
+
+.modal-content {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 20px;
 }

@@ -43,17 +43,22 @@
 				<span id="backBtn"><i class="fa-solid fa-arrow-left"></i></span>
 				<h2 class="modal-h2">Ajout photo</h2>
 			
-				<button id="addPhotoBtn">Ajouter photo</button>
+				<!-- <button id="addPhotoBtn">Ajouter photo</button> -->
 				<div id="photoModal">
-					<div class="modal-content">
+					<form class="modal-content">
 						<input type="file" id="photoInput">
 						<label for="title">Titre</label>
 						<input type="text" id="titleInput">
 						<label for="category">Catégorie</label>
-						<select id="categorySelect"></select>
-						<button id="submitPhotoBtn">Valider</button>
+						<select id="categorySelect">
+							<option value=""></option>
+							<option value="1">Objets</option>
+							<option value="2">Appartements</option>
+							<option value="3">Hotels & restaurants</option>
+						</select>
+						<button type="button" id="submitPhotoBtn">Valider</button>
 
-					</div>
+					</form>
 				</div>
 			</div>
 		</div>

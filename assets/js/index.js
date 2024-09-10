@@ -29,7 +29,6 @@ const displayWork = () => {
 				<figcaption>${element.title}</figcaption>
 			</figure>`;
 
-            //galleryDelPhotos.innerHTML +="";
 
             const div = document.createElement('div');
             const img = document.createElement('img');
@@ -38,7 +37,11 @@ const displayWork = () => {
             trash.classList.add('fa', 'fa-trash');
 
             trash.addEventListener('click' , function () {
-                div.remove();
+                if (confirm("Press a button OK!")) {
+                    delPhoto(element.id);
+                }
+            
+               
             });
 
             div.appendChild(img);

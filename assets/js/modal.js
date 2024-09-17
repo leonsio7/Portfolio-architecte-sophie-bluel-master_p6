@@ -2,8 +2,10 @@ const modal = document.getElementById('modal');
 const modalGallery = document.getElementById('modal-gallery');
 const modalForm = document.getElementById('modal-form');
 const closeBtn = document.getElementById('closeBtn');
+const closeBtn1 = document.getElementById('closeBtn1');
 const addPhotoBtn = document.getElementById('addPhotoBtn');
 const backBtn = document.getElementById('backBtn');
+const submitPhotoBtn = document.getElementById('submitPhotoBtn');
 
 if (isLogin()) {
 
@@ -28,13 +30,16 @@ if (isLogin()) {
         modalForm.style.display = 'none';
 
     })
+    closeBtn1.addEventListener('click', () => {
+        modal.style.display = 'none';
+    })
 }
 
 const delPhoto = (id) => {
     fetch("http://localhost:5678/api/works/" + id, {
         method: "DELETE",
         headers: {
-            Authorization: "Bearer" + sessionStorage.getItem("token"),
+            Authorization: "Bearer " + sessionStorage.getItem("token"),
         },
     })
         .then((response) => {
@@ -62,32 +67,48 @@ const formAddWork = () => {
         method: "POST",
         headers: {
             accept: "application/json",
-            Authorization: "Bearer" + sessionStorage.getItem("token"),
+            Authorization: "Bearer " + sessionStorage.getItem("token"),
         },
         body: data,
     })
+        .then((response) => {
+            getWorks();
+            Addform.reset()
+            verifData()
+        })
+        .catch((err) => console.log(err, "fetch error "));
 }
 
 
 
-const categorySelect = document.createElement('select');
-categorySelect.setAttribute('id','categorySelect');
-categorySelect.setAttribute('name', 'category');
+fetch("http://localhost:5678/api/categories")
+    .then(response => response.json())
+    .then(categories => {
+        const categorySelect = document.getElementById('categorySelect');
+        categories.forEach(category => {
+            const option = document.createElement('option');
+            option.value = category.id;
+            option.textContent = category.name;
+            categorySelect.appendChild(option);
+        });
+    })
+    .catch(error => console.error('Error fetching categories:', error));
 
 
-const categories = [
-    { value: "", text: "" }, 
-    { value: "1", text: "Objets" }, 
-    { value: "2", text: "Appartement" }, 
-    { value: "3", text: "Hotels & restaurants" 
+    const verifData = () => {
 
-    }];
+        submitPhotoBtn.disabled = photoInput.files[0] === undefined || titleInput.value === "" || categorySelect.value === "" ? true : false
+    }
 
-    categories.forEach(category => { 
-        const option = document.createElement('option'); 
-        option.value = category.value;
-         option.text = category.text; 
-         categorySelect.appendChild(option); 
-        })
+    titleInput.addEventListener('keyup', () => {
+        verifData()
+    })
 
+    categorySelect.addEventListener('change', () => {
+        verifData()
+    })
+
+    photoInput.addEventListener('change', () => {
+        verifData()
+    })
 

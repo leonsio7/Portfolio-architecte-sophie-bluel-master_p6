@@ -435,6 +435,8 @@ footer nav ul {
 
 .modal-h2 {
 	color: black;
+	top: 40px;
+
 }
 
 #modal-gallery,
@@ -448,13 +450,22 @@ footer nav ul {
 	gap: 45px;
 }
 
-#closeBtn {
+#closeBtn,
+#closeBtn1 {
 	left: 230px;
 	position: relative;
 	top: 30px;
 	font-weight: 900;
 	cursor: pointer;
 	
+}
+
+#backBtn {
+	display: flex;
+	position: relative;
+	right: 230px;
+	top: -30px;
+	cursor: pointer;
 }
 
 #addPhotoBtn {
@@ -473,5 +484,62 @@ footer nav ul {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	gap: 20px;
+	/* gap: 20px; */
+}
+
+.upload-container {
+	flex-direction: column;
+	text-align: center;
+	padding: 40px;
+	/* border: 2px solid #ccc; */
+	margin-bottom: 20px;
+	width: 300px;
+	background-color: #E8F1F6;
+	
+}
+
+.upload-label {
+	cursor: pointer;
+}
+
+.upload-icon {
+	align-items: center;
+	justify-content: center;
+	width: 50px;
+	height: 50px;
+	margin-bottom: 10px;
+	
+}
+
+#ajoutPhoto {
+	border: 2px solid #CBD6DC;
+	border-radius: 15px;
+	background-color: #CBD6DC;
+	padding: 4px;
+	
+	
+}
+
+.hidden-input {
+	display: none;
+}
+
+.modal-content input[type="text"],
+.modal-content select[ id="categorySelect"] {
+	width: 100%;
+	padding: 15px;
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+	margin: 0.4em 0 2em 0;
+}
+
+#submitPhotoBtn {
+    width: 50%;
+    padding: 7px;
+    background-color: #a7a7a7;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    font-size: 15px;
+
 }

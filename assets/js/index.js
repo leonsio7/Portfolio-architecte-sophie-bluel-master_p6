@@ -73,6 +73,9 @@ const displayFiltres = () => {
     BtnTous.addEventListener('click', () => {
         displayWork();
     })
+
+    // BtnTous.focus()
+
     filtres.appendChild(BtnTous);
 
 

@@ -37,7 +37,7 @@ const displayWork = () => {
             trash.classList.add('fa', 'fa-trash');
 
             trash.addEventListener('click' , function () {
-                if (confirm("Press a button OK!")) {
+                if (confirm("Etes-vous sûr de vouloir supprimer cette photo?")) {
                     delPhoto(element.id);
                 }
             
@@ -57,7 +57,10 @@ const getCategories = () => {
         .then((rep) => rep.json())
         .then((rep) => {
             categories = rep;
-            if(isLogin() === false) {
+            if(isLogin() ) {
+                createOptions();
+            }
+            else {
                 displayFiltres();
             }
             
@@ -70,11 +73,11 @@ getCategories();
 const displayFiltres = () => {
     const BtnTous = document.createElement("Button");
     BtnTous.innerText = "Tous";
+    BtnTous.classList.add('selected')
     BtnTous.addEventListener('click', () => {
         displayWork();
     })
 
-    // BtnTous.focus()
 
     filtres.appendChild(BtnTous);
 
@@ -85,6 +88,7 @@ const displayFiltres = () => {
         BtnFiltre.innerText = Cat.name;
 
         BtnFiltre.addEventListener('click', () => {
+            BtnTous.classList.remove('selected')
             gallery.innerHTML = "";
 
             works.forEach((element) => {

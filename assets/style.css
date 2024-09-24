@@ -316,6 +316,12 @@ input[type="submit"] {
 
 }
 
+.filtres .selected {
+	background-color:#1D6154; 
+	color: white;
+
+}
+
 
 
 
@@ -370,6 +376,12 @@ span a {
 	color: black;
 
 
+}
+
+#editBtn {
+	border: none;
+	background-color: transparent;
+	cursor: pointer;
 }
 
 #galleryDelPhotos {
@@ -443,7 +455,7 @@ footer nav ul {
 #modal-form {
 	display: none;
 	width: 550px;
-	height: 650px;
+	height: 690px;
 	background: white;
 	flex-direction: column;
 	align-items: center;
@@ -476,6 +488,7 @@ footer nav ul {
 	border: none;
 	border-radius: 15px;
 	font-size: 15px;
+	cursor: pointer;
 
 }
 
@@ -484,22 +497,26 @@ footer nav ul {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	/* gap: 20px; */
+	
 }
 
 .upload-container {
+	display: flex;
 	flex-direction: column;
 	text-align: center;
 	padding: 40px;
-	/* border: 2px solid #ccc; */
 	margin-bottom: 20px;
 	width: 300px;
+	height: 100px;
 	background-color: #E8F1F6;
 	
 }
 
 .upload-label {
 	cursor: pointer;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 .upload-icon {
@@ -511,35 +528,63 @@ footer nav ul {
 	
 }
 
-#ajoutPhoto {
+.ajoutPhoto {
 	border: 2px solid #CBD6DC;
 	border-radius: 15px;
 	background-color: #CBD6DC;
-	padding: 4px;
-	
-	
+	padding: 7px;
+	width: 50%;
+	color: #3a6d8a;
+	font-weight: bold;
+}
+
+.format {
+	font-size: 10px;
+	margin-top: 5px;
+
 }
 
 .hidden-input {
 	display: none;
 }
 
-.modal-content input[type="text"],
-.modal-content select[ id="categorySelect"] {
-	width: 100%;
+.title {
+	font-weight:500;
+	position: relative;
+	right: 178px;
+}
+
+.cat {
+	font-weight:500;
+	position: relative;
+	right: 165px;
+}
+
+.modal-content input[type="text"] {
+	width: 90%;
 	padding: 15px;
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 	margin: 0.4em 0 2em 0;
 }
 
+.modal-content select[ id="categorySelect"] {
+	width: 98%;
+	padding: 15px;
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+	margin: 0.4em 0 2em 0;
+
+}
+
+
 #submitPhotoBtn {
     width: 50%;
     padding: 7px;
-    background-color: #a7a7a7;
     color: white;
     border: none;
     border-radius: 15px;
     font-size: 15px;
-
+	cursor: pointer;
 }
+

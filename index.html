@@ -35,36 +35,37 @@
 				<span id="closeBtn">&times;</span>
 				<h2 class="modal-h2">Galerie photo</h2>
 				<div id="galleryDelPhotos"></div>
-				<hr width = "400">
+				<hr width="400">
 				<button id="addPhotoBtn">Ajouter une photo</button>
 			</div>
 			<div id="modal-form">
 				<span id="closeBtn1">&times;</span>
 				<span id="backBtn"><i class="fa-solid fa-arrow-left"></i></span>
 				<h2 class="modal-h2">Ajout photo</h2>
-			
-				<!-- <button id="addPhotoBtn">Ajouter photo</button> -->
-				<!-- <div id="photoModal"> -->
-					<form id="Addform"  class="modal-content">
-						<div class="upload-container">
-						<input type="file" id="photoInput" accept=".jpg, .png" class="hidden-input" />
-						<label for="photoInput" class="upload-label">
-							<img src="./assets/images/photo.png" alt="Upload" class="upload-icon"/>
-							<span id="ajoutPhoto">+ Ajouter photo</span>
-							<p>jpg, png: 4mo max</p>
-						</label>
-						</div>
-						<label for="title">Titre</label>
-						<input type="text" id="titleInput" />
-						<label for="category">Catégorie</label>
-						<select id="categorySelect">
-							<option value=""></option>
-						</select>
-						<hr width = "400">
-						<button type="button" id="submitPhotoBtn">Valider</button>
 
-					</form>
-				<!-- </div> -->
+
+				<form id="Addform" class="modal-content">
+					<div class="upload-container">
+						<input type="file" id="photoInput" accept=".jpg, .png" class="hidden-input"
+							onchange="previewImage(event)" />
+						<label for="photoInput" class="upload-label" id="uploadLabel">
+							<img src="./assets/images/photo.png" alt="Upload" class="upload-icon" id="imagePreview" />
+							<span class="ajoutPhoto" id="imageLabelText">+ Ajouter photo</span>
+							<p class="format">jpg, png : 4mo max</p>
+						</label>
+					</div>
+					<label for="title" class="title">Titre</label>
+					<input type="text" id="titleInput" />
+					<label for="category" class="cat">Catégorie</label>
+					<select id="categorySelect">
+						
+						<option value=""></option>
+					</select>
+					<hr width="400">
+					<button type="button" id="submitPhotoBtn" class="btn disabled">Valider</button>
+
+				</form>
+
 			</div>
 		</div>
 		</div>
@@ -92,10 +93,6 @@
 
 
 			<div class="gallery">
-				<!-- <figure>
-				<img src="assets/images/abajour-tahina.png" alt="Abajour Tahina">
-				<figcaption>Abajour Tahina</figcaption>
-			</figure> -->
 
 			</div>
 		</section>

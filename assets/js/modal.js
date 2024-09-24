@@ -6,6 +6,9 @@ const closeBtn1 = document.getElementById('closeBtn1');
 const addPhotoBtn = document.getElementById('addPhotoBtn');
 const backBtn = document.getElementById('backBtn');
 const submitPhotoBtn = document.getElementById('submitPhotoBtn');
+const image = document.getElementById('imagePreview');
+const imageLabelText = document.getElementById('imageLabelText');
+
 
 if (isLogin()) {
 
@@ -32,6 +35,7 @@ if (isLogin()) {
     })
     closeBtn1.addEventListener('click', () => {
         modal.style.display = 'none';
+        modalForm.style.display = 'none';
     })
 }
 
@@ -49,7 +53,10 @@ const delPhoto = (id) => {
         .catch((err) => console.log(err, "fetch error "));
 };
 
-submitPhotoBtn.addEventListener('click', () => {
+submitPhotoBtn.addEventListener('click', (event) => {
+    modalForm.style.display = 'none';
+    modalGallery.style.display = 'flex'
+    event.preventDefault();
     formAddWork();
 })
 const formAddWork = () => {
@@ -73,42 +80,75 @@ const formAddWork = () => {
     })
         .then((response) => {
             getWorks();
-            Addform.reset()
-            verifData()
+            Addform.reset();
+            resetPreview();
+            verifData();
         })
         .catch((err) => console.log(err, "fetch error "));
 }
 
+const createOptions = () => {
+    const categorySelect = document.getElementById('categorySelect');
+    categories.forEach(category => {
+        const option = document.createElement('option');
+        option.value = category.id;
+        option.textContent = category.name;
+        categorySelect.appendChild(option);
+    });
+}
 
 
-fetch("http://localhost:5678/api/categories")
-    .then(response => response.json())
-    .then(categories => {
-        const categorySelect = document.getElementById('categorySelect');
-        categories.forEach(category => {
-            const option = document.createElement('option');
-            option.value = category.id;
-            option.textContent = category.name;
-            categorySelect.appendChild(option);
-        });
-    })
-    .catch(error => console.error('Error fetching categories:', error));
+    
 
 
-    const verifData = () => {
+function previewImage(event) {
 
-        submitPhotoBtn.disabled = photoInput.files[0] === undefined || titleInput.value === "" || categorySelect.value === "" ? true : false
+    if (event.target.files.length > 0) {
+        let src = URL.createObjectURL(event.target.files[0]);
+        image.src = src;
+        image.style.display = 'flex';
+        imageLabelText.style.display = 'none'
+    }
+    verifData();
+}
+
+function resetPreview() {
+
+    image.src = '';
+    image.style.display = 'none';
+    imageLabelText.style.display = 'flex';
+}
+
+
+
+
+
+
+
+
+const verifData = () => {
+
+    const isDisabled = photoInput.files[0] === undefined || titleInput.value === "" || categorySelect.value === "";
+    submitPhotoBtn.disabled = isDisabled;
+    if (isDisabled) {
+        submitPhotoBtn.style.backgroundColor = "#a7a7a7";
+    }
+    else {
+        submitPhotoBtn.style.backgroundColor = " #1D6154"
     }
 
-    titleInput.addEventListener('keyup', () => {
-        verifData()
-    })
 
-    categorySelect.addEventListener('change', () => {
-        verifData()
-    })
+};
 
-    photoInput.addEventListener('change', () => {
-        verifData()
-    })
+titleInput.addEventListener('keyup', () => {
+    verifData()
+})
+
+categorySelect.addEventListener('change', () => {
+    verifData()
+})
+
+photoInput.addEventListener('change', () => {
+    verifData();
+})
 
